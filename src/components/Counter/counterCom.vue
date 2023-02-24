@@ -13,6 +13,7 @@
 import bus from '@/components/eventBus.js'
 
 export default {
+  name:'counterCom',
   props: {
     // 接收商品的 id 值，将来，使用 EventBus 方案，
     // 把数量传递到 App.vue 的时候，需要通知 App 组件，更新哪个商品的数量

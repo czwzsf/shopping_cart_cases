@@ -29,6 +29,7 @@
 import Counter from '@/components/Counter/counterCom.vue'
 
 export default {
+  name:'goodsCom',
   props: {
     // 商品的 id
     // 为啥在这里要封装一个 id 属性呢？

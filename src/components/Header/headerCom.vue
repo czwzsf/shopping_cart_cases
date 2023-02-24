@@ -4,6 +4,7 @@
 
 <script>
 export default {
+  name:'headerCom',
   props: {
     // 声明 title 自定义属性，允许使用者自定义标题的内容
     title: {

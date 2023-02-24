@@ -19,6 +19,7 @@
 
 <script>
 export default {
+  name: 'footerCom',
   props: {
     // 全选的状态
     isfull: {
