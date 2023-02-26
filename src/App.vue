@@ -4,6 +4,8 @@
     <HeaderCom></HeaderCom>
     <p>
       {{ fullState }}
+      {{ calAmount }}
+      {{ calSelect }}
     </p>
     <!--goodsCom-->
     <GoodsCom v-for="item in list"
@@ -18,6 +20,8 @@
     ></GoodsCom>
     <FooterCom
         :isfull="fullState"
+        :amount="calAmount"
+        :all="calSelect"
         @full-change="getFullCheck"
     ></FooterCom>
   </div>
@@ -41,6 +45,28 @@ export default {
     // Judge whether to select all
     fullState() {
       return this.list.every(item => item.goods_state)
+    },
+    // Calculate the price
+    calAmount() {
+      let amount = 0
+      let list_length = this.list.length
+      for (let i = 0; i < list_length; i++) {
+        if (this.list[i].goods_state === true) {
+          amount = amount + this.list[i].goods_price
+        }
+      }
+      return amount
+    },
+    // Record the selected quantity
+    calSelect() {
+      let num_select = 0
+      let list_length = this.list.length
+      for (let i = 0; i < list_length; i++) {
+        if (this.list[i].goods_state === true) {
+          num_select++
+        }
+      }
+      return num_select
     }
   },
   data() {
