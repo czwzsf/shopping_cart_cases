@@ -1,9 +1,16 @@
 <template>
   <div id="app">
-    <!--headerCom    -->
+    <!--headerCom-->
     <HeaderCom></HeaderCom>
-    <GoodsCom v-for="item in list" :key="item.id" :id="item.id" :title="item.goods_name" :pic="item.goods_img"
-              :price="item.goods_price" :state="item.goods_state" :count="item.goods_count"></GoodsCom>
+    <!--goodsCom-->
+    <GoodsCom v-for="item in list"
+              :key="item.id"
+              :id="item.id"
+              :title="item.goods_name"
+              :pic="item.goods_img"
+              :price="item.goods_price"
+              :state="item.goods_state"
+              :count="item.goods_count"></GoodsCom>
   </div>
 </template>
 
