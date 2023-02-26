@@ -3,7 +3,7 @@
     <!--headerCom-->
     <HeaderCom></HeaderCom>
     <p>
-      {{ fullState}}
+      {{ fullState }}
     </p>
     <!--goodsCom-->
     <GoodsCom v-for="item in list"
@@ -16,7 +16,10 @@
               :count="item.goods_count"
               @state-change="getNewState"
     ></GoodsCom>
-    <FooterCom :isfull="fullState"></FooterCom>
+    <FooterCom
+        :isfull="fullState"
+        @full-change="getFullCheck"
+    ></FooterCom>
   </div>
 </template>
 
@@ -67,7 +70,21 @@ export default {
           item.goods_state = val.value
         }
       })
+    },
+    // Accept data passed by footerCom to change check
+    getFullCheck(val) {
+      console.log(val)
+      if (val === true) {
+        this.list.forEach((item) => {
+          item.goods_state = val
+        })
+      }else {
+        this.list.forEach((item) => {
+          item.goods_state = !val
+        })
+      }
     }
+
   },
   created() {
     // call initCartList()
