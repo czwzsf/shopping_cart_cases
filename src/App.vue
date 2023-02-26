@@ -2,7 +2,7 @@
   <div id="app">
     <!--headerCom    -->
     <header-com></header-com>
-    <h1>App根组件</h1>
+    <h1>购物车实例</h1>
   </div>
 </template>
 
@@ -16,6 +16,12 @@ export default {
   components: {
     headerCom,
   },
+  data() {
+    return {
+      // Used to store the data returned from the shopping cart interface
+      list: []
+    }
+  },
   methods: {
     /*
     1.This function is used to request data using axios
@@ -24,7 +30,10 @@ export default {
     async initCartList() {
       // Call Axios get method to request list data
       const {data: res} = await axios.get('https://www.escook.cn/api/cart')
-      console.log(res)
+      if(res.status === 200){
+        // store date
+        this.list = res.list
+      }
     }
   },
   created() {
