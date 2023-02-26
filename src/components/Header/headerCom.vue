@@ -8,7 +8,7 @@ export default {
   props: {
     // 声明 title 自定义属性，允许使用者自定义标题的内容
     title: {
-      default: '',
+      default: '这是头部组件',
       type: String
     }
   }
@@ -17,7 +17,7 @@ export default {
 
 <style lang="less" scoped>
 .header-container {
-  font-size: 12px;
+  font-size: 20px;
   height: 45px;
   width: 100%;
   background-color: #1d7bff;
