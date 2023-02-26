@@ -2,6 +2,9 @@
   <div id="app">
     <!--headerCom-->
     <HeaderCom></HeaderCom>
+    <p>
+      {{ fullState}}
+    </p>
     <!--goodsCom-->
     <GoodsCom v-for="item in list"
               :key="item.id"
@@ -10,13 +13,17 @@
               :pic="item.goods_img"
               :price="item.goods_price"
               :state="item.goods_state"
-              :count="item.goods_count"></GoodsCom>
+              :count="item.goods_count"
+              @state-change="getNewState"
+    ></GoodsCom>
+    <FooterCom :isfull="fullState"></FooterCom>
   </div>
 </template>
 
 <script>
 import GoodsCom from "@/components/Goods/goodsCom.vue";
 import HeaderCom from "@/components/Header/headerCom.vue";
+import FooterCom from "@/components/Footer/footerCom.vue";
 // import axios
 import axios from "axios";
 
@@ -25,7 +32,13 @@ export default {
   components: {
     HeaderCom,
     GoodsCom,
-
+    FooterCom,
+  },
+  computed: {
+    // Judge whether to select all
+    fullState() {
+      return this.list.every(item => item.goods_state)
+    }
   },
   data() {
     return {
@@ -45,6 +58,15 @@ export default {
         // store date
         this.list = res.list
       }
+    },
+    // Accept data passed by sub-components
+    getNewState(val) {
+      // change value of id and goods_state
+      this.list.some(item => {
+        if (item.id === val.id) {
+          item.goods_state = val.value
+        }
+      })
     }
   },
   created() {
