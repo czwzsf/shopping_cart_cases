@@ -76,11 +76,11 @@ export default {
       console.log(val)
       if (val === true) {
         this.list.forEach((item) => {
-          item.goods_state = val
+          item.goods_state = true
         })
-      }else {
+      } else {
         this.list.forEach((item) => {
-          item.goods_state = !val
+          item.goods_state = false
         })
       }
     }
