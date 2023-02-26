@@ -2,11 +2,6 @@
   <div id="app">
     <!--headerCom-->
     <HeaderCom></HeaderCom>
-    <p>
-      {{ fullState }}
-      {{ calAmount }}
-      {{ calSelect }}
-    </p>
     <!--goodsCom-->
     <GoodsCom v-for="item in list"
               :key="item.id"
