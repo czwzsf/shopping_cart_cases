@@ -4,10 +4,10 @@
     <div class="thumb">
       <div class="custom-control custom-checkbox">
         <!-- 复选框 -->
-        <input type="checkbox" class="custom-control-input" :id="'cb' + id" :checked="state" @change="stateChange" />
+        <input type="checkbox" class="custom-control-input" :id="'cb' + id" :checked="state" @change="stateChange"/>
         <label class="custom-control-label" :for="'cb' + id">
           <!-- 商品的缩略图 -->
-          <img :src="pic" alt="" />
+          <img :src="pic" alt=""/>
         </label>
       </div>
     </div>
@@ -29,7 +29,7 @@
 import Counter from '@/components/Counter/counterCom.vue'
 
 export default {
-  name:'goodsCom',
+  name: 'goodsCom',
   props: {
     // 商品的 id
     // 为啥在这里要封装一个 id 属性呢？
@@ -70,7 +70,7 @@ export default {
     stateChange(e) {
       const newState = e.target.checked
       // 触发自定义事件
-      this.$emit('state-change', { id: this.id, value: newState })
+      this.$emit('state-change', {id: this.id, value: newState})
     }
   },
   components: {
@@ -84,11 +84,14 @@ export default {
   + .goods-container {
     border-top: 1px solid #efefef;
   }
+
   padding: 10px;
   display: flex;
+
   .thumb {
     display: flex;
     align-items: center;
+
     img {
       width: 100px;
       height: 100px;
@@ -101,13 +104,16 @@ export default {
     flex-direction: column;
     justify-content: space-between;
     flex: 1;
+
     .goods-title {
       font-weight: bold;
       font-size: 12px;
     }
+
     .goods-info-bottom {
       display: flex;
       justify-content: space-between;
+
       .goods-price {
         font-weight: bold;
         color: red;

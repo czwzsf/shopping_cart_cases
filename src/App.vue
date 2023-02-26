@@ -1,20 +1,24 @@
 <template>
   <div id="app">
     <!--headerCom    -->
-    <header-com></header-com>
-    <h1>购物车实例</h1>
+    <HeaderCom></HeaderCom>
+    <GoodsCom v-for="item in list" :key="item.id" :id="item.id" :title="item.goods_name" :pic="item.goods_img"
+              :price="item.goods_price" :state="item.goods_state" :count="item.goods_count"></GoodsCom>
   </div>
 </template>
 
 <script>
-import headerCom from "@/components/Header/headerCom.vue";
+import GoodsCom from "@/components/Goods/goodsCom.vue";
+import HeaderCom from "@/components/Header/headerCom.vue";
 // import axios
 import axios from "axios";
 
 export default {
   name: 'App',
   components: {
-    headerCom,
+    HeaderCom,
+    GoodsCom,
+
   },
   data() {
     return {
@@ -30,7 +34,7 @@ export default {
     async initCartList() {
       // Call Axios get method to request list data
       const {data: res} = await axios.get('https://www.escook.cn/api/cart')
-      if(res.status === 200){
+      if (res.status === 200) {
         // store date
         this.list = res.list
       }
