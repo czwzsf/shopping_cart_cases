@@ -15,7 +15,7 @@
     ></GoodsCom>
     <FooterCom
         :isfull="fullState"
-        :amount="calAmount"
+        :amount="calAmount1"
         :all="calSelect"
         @full-change="getFullCheck"
     ></FooterCom>
@@ -41,16 +41,26 @@ export default {
     fullState() {
       return this.list.every(item => item.goods_state)
     },
-    // Calculate the price
+    // Calculate the total price of the checked items function1
     calAmount() {
       let amount = 0
       let list_length = this.list.length
       for (let i = 0; i < list_length; i++) {
         if (this.list[i].goods_state === true) {
-          amount = amount + this.list[i].goods_price
+          amount = amount + this.list[i].goods_price * this.list[i].goods_count
         }
       }
       return amount
+    },
+    //Calculate the total price of the checked items function2
+    calAmount1() {
+      // filter 过滤元素
+      // reduce 累加元素
+      return this.list
+          .filter(item => item.goods_state)
+          .reduce((total, item) => {
+            return total += item.goods_price * item.goods_count
+          }, 0)
     },
     // Record the selected quantity
     calSelect() {
