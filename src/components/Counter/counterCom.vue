@@ -13,7 +13,7 @@
 import bus from '@/components/eventBus.js'
 
 export default {
-  name:'counterCom',
+  name: 'counterCom',
   props: {
     // 接收商品的 id 值，将来，使用 EventBus 方案，
     // 把数量传递到 App.vue 的时候，需要通知 App 组件，更新哪个商品的数量
@@ -32,7 +32,7 @@ export default {
     add() {
       // 要发送给 App 的数据格式为 { id, value }
       // 其中，id 是商品的 id; value 是商品最新的购买数量
-      const obj = { id: this.id, value: this.num + 1 }
+      const obj = {id: this.id, value: this.num + 1}
       // 要做的事情：通过 EventBus 把 obj 对象，发送给 App.vue 组件
       bus.$emit('share', obj)
     },
@@ -40,7 +40,7 @@ export default {
       if (this.num - 1 === 0) return
       // 要发送给 App 的数据格式为 { id, value }
       // 其中，id 是商品的 id; value 是商品最新的购买数量
-      const obj = { id: this.id, value: this.num - 1 }
+      const obj = {id: this.id, value: this.num - 1}
       // 要做的事情：通过 EventBus 把 obj 对象，发送给 App.vue 组件
       bus.$emit('share', obj)
     }

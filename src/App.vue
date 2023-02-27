@@ -26,6 +26,7 @@
 import GoodsCom from "@/components/Goods/goodsCom.vue";
 import HeaderCom from "@/components/Header/headerCom.vue";
 import FooterCom from "@/components/Footer/footerCom.vue";
+import bus from '@/components/eventBus.js'
 // import axios
 import axios from "axios";
 
@@ -114,12 +115,25 @@ export default {
           item.goods_state = false
         })
       }
-    }
+    },
+    // Update the selected number
+    chageCount() {
+      bus.$on('share', (val) => {
+        this.list.some(item => {
+          if (item.id === val.id) {
+            item.goods_count = val.value
+            return true
+          }
+        })
+      })
+    },
 
   },
   created() {
     // call initCartList()
     this.initCartList()
+    // call changeCount()
+    this.chageCount()
   }
 }
 </script>
