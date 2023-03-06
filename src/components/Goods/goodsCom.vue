@@ -19,7 +19,8 @@
         <!-- 商品价格 -->
         <span class="goods-price">￥{{ price }}</span>
         <!-- 商品的数量 -->
-        <Counter :num="count" :id="id"></Counter>
+        <!-- 在此处放置一个插槽-->
+        <slot></slot>
       </div>
     </div>
   </div>
